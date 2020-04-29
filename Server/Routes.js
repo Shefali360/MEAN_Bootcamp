@@ -1,74 +1,79 @@
 const users = [{
     "username": "ingunna",
-    "first_name": "Ingunna",
-    "last_name": "Litherborough",
+    "firstname": "Ingunna",
+    "lastname": "Litherborough",
     "password": "ilitherborough0",
 },
 {
     "username": "jany",
-    "first_name": "Jany",
-    "last_name": "Deville",
+    "firstname": "Jany",
+    "lastname": "Deville",
     "password": "jdeville1",
 },
 {
     "username": "almira",
-    "first_name": "Almira",
-    "last_name": "Melson",
+    "firstname": "Almira",
+    "lastname": "Melson",
     "password": "amelson2",
 },
 {
     "username": "danya",
-    "first_name": "Danya",
-    "last_name": "Ordelt",
+    "firstname": "Danya",
+    "lastname": "Ordelt",
     "password": "dordelt3",
 },
 {
     "username": "biddy",
-    "first_name": "Biddy",
-    "last_name": "Backsal",
+    "firstname": "Biddy",
+    "lastname": "Backsal",
     "password": "bbacksal4",
 },
 {
     "username": "lemmy",
-    "first_name": "Lemmy",
-    "last_name": "Fallon",
+    "firstname": "Lemmy",
+    "lastname": "Fallon",
     "password": "lfallon5",
 },
 {
     "username": "prentice",
-    "first_name": "Prentice",
-    "last_name": "Nickell",
+    "firstname": "Prentice",
+    "lastname": "Nickell",
     "password": "pnickell6",
 },
 {
     "username": "timotheus",
-    "first_name": "Timotheus",
-    "last_name": "January 1st",
+    "firstname": "Timotheus",
+    "lastname": "January 1st",
     "password": "tjanuaryst7",
 },
 {
     "username": "patrizio",
-    "first_name": "Patrizio",
-    "last_name": "Husher",
+    "firstname": "Patrizio",
+    "lastname": "Husher",
     "password": "phusher8",
 },
 {
     "username": "beulah",
-    "first_name": "Beulah",
-    "last_name": "Gowrie",
+    "firstname": "Beulah",
+    "lastname": "Gowrie",
     "password": "bgowrie9",
 },
 ];
+
+adduser=(userdata)=>{
+    users.push(userdata);
+
+}
 
 exports.router = (app) => {
     app.get('/home', (req, res) => {
         res.status(200);
         res.json(users);
     });
-    // app.post('/adduser',(req,res)=>{
-
-    //     res.send();
-    // })
+    app.post('/adduser',(req,res)=>{
+       adduser(req.body);
+       res.status(200);
+    })
     // app.delete('')
 
 }

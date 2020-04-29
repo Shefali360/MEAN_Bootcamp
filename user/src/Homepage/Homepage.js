@@ -9,7 +9,7 @@ class homepage extends Component{
         data:[]
     }
     componentDidMount(){
-        axios.get("localhost:8000/home")
+        axios.get("http://localhost:8000/home")
         .then(res=>{
             const data=res.data;
             console.log(data);
@@ -25,11 +25,11 @@ class homepage extends Component{
             let contents=null;
             contents= d.map((data)=>{
                 return(
-                  <tbody>
-                        <tr>
+                  <tbody key={data.username}>
+                        <tr >
                             <td>{data.username}</td>
-                            <td>{data.first_name}</td>
-                            <td>{data.last_name}</td>
+                            <td>{data.firstname}</td>
+                            <td>{data.lastname}</td>
                             <td>{data.password}</td>
                         </tr>
                  </tbody>
@@ -46,6 +46,7 @@ class homepage extends Component{
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Password</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                      {contents}

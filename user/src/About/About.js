@@ -1,32 +1,16 @@
-import React,{Component} from 'react';
-import axios from 'axios';
-import '../Content.css';
+import React from 'react';
 
-
-class about extends Component{
-
-    state={
-        title:null
-    }
-    componentDidMount(){
-        axios.get("http://localhost:3030/about")
-        .then(res=>{
-            const title=res.data.title;
-            this.setState({title:title});
-
-        })
-        .catch(err=>{
-            console.log("Error");
-        })
-    }
-    render(){
-        return(
-            <div className="content">
-                {this.state.title}
-            </div>
-        );
-    }
-
+const about=()=>{
+    return(
+        <div>
+            <h3>About Us:</h3>
+            <p>This is a website which fetches user list from the server.We can also delete users from the list.And we can also add users after filling a form provided. </p>
+      
+        <h3>About the creator:</h3>
+        <p>This website is created by Shefali Goyal.She is a MEAN trainee at To The New. </p>
+        </div>
+    );
 }
+
 
 export default about;
