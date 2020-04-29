@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import '../Content.css';
+import './Homepage.css';
 
 
 class homepage extends Component{
 
     state={
-        data:[]
+        data:[],
+        username:''
     }
     componentDidMount(){
         axios.get("http://localhost:8000/home")
@@ -20,6 +21,18 @@ class homepage extends Component{
             console.log("Error");
         })
     }
+
+    deleteUser=(event)=>{
+        this.setState({username:event.target.username})
+        console.log(this.state.username);
+        axios.post("http://localhost:8000/deleteuser",this.state.username)
+        .then(res=>{
+            console.log("Success");
+        })
+        .catch(err=>{
+            console.log("error");
+        })
+    }
     render(){
             let d=this.state.data;
             let contents=null;
@@ -30,7 +43,8 @@ class homepage extends Component{
                             <td>{data.username}</td>
                             <td>{data.firstname}</td>
                             <td>{data.lastname}</td>
-                            <td>{data.password}</td>
+                             <td>{data.createdOn}</td>
+                             <td><button onClick={(event)=>{this.deleteUser(event)}}>Delete User</button></td>
                         </tr>
                  </tbody>
                   
@@ -38,20 +52,19 @@ class homepage extends Component{
 
             })
         return(
-            <div className="content">
-            <table>
+            <table className="table">
                 <thead>
                         <tr>
                             <th>Username</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Password</th>
+                            <th>CreatedOn</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                      {contents}
              </table>
-            </div>
+           
         );
     }
 

@@ -2,66 +2,73 @@ const users = [{
     "username": "ingunna",
     "firstname": "Ingunna",
     "lastname": "Litherborough",
-    "password": "ilitherborough0",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "jany",
     "firstname": "Jany",
     "lastname": "Deville",
-    "password": "jdeville1",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "almira",
     "firstname": "Almira",
     "lastname": "Melson",
-    "password": "amelson2",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "danya",
     "firstname": "Danya",
     "lastname": "Ordelt",
-    "password": "dordelt3",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "biddy",
     "firstname": "Biddy",
     "lastname": "Backsal",
-    "password": "bbacksal4",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "lemmy",
     "firstname": "Lemmy",
     "lastname": "Fallon",
-    "password": "lfallon5",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "prentice",
     "firstname": "Prentice",
     "lastname": "Nickell",
-    "password": "pnickell6",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "timotheus",
     "firstname": "Timotheus",
     "lastname": "January 1st",
-    "password": "tjanuaryst7",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "patrizio",
     "firstname": "Patrizio",
     "lastname": "Husher",
-    "password": "phusher8",
+    "createdOn":"28-4-2020"
 },
 {
     "username": "beulah",
     "firstname": "Beulah",
     "lastname": "Gowrie",
-    "password": "bgowrie9",
+    "createdOn":"28-4-2020"
 },
 ];
 
 adduser=(userdata)=>{
     users.push(userdata);
+
+}
+
+deleteuser=(username)=>{
+   users.filter(user=>{
+       return (user.username!==username);
+   })
 
 }
 
@@ -73,8 +80,13 @@ exports.router = (app) => {
     app.post('/adduser',(req,res)=>{
        adduser(req.body);
        res.status(200);
+    
     })
-    // app.delete('')
+    app.delete('/deleteuser',(req,res)=>{
+        deleteuser(req.body.username);
+        res.status(200);
+
+    })
 
 }
 

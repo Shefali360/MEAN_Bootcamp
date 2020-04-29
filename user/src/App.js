@@ -13,8 +13,8 @@ function App() {
         <Switch>
         <Route path="/home" component={Homepage} />
         <Route path="/adduser" component={Adduser} />
+        <Route path="/deleteuser" component={Homepage} />
         <Route path="/about" component={About} />
-        
         </Switch>
 
        
