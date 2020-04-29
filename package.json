@@ -1,0 +1,28 @@
+{
+  "name": "mean_bootcamp",
+  "version": "1.0.0",
+  "description": "Expressjs exercise",
+  "main": "index.js",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shefali360/MEAN_Bootcamp.git"
+  },
+  "author": "Shefali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shefali360/MEAN_Bootcamp/issues"
+  },
+  "homepage": "https://github.com/Shefali360/MEAN_Bootcamp#readme"
+}
