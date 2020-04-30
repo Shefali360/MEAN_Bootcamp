@@ -1,2 +1,2 @@
-let imported=require("./Exported");
+let imported = require("./Exported");
 imported.sum();
