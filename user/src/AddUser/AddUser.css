@@ -28,6 +28,10 @@
     font-weight: bold;
     color:#ff0019;
 }
+.button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
 .button:hover{
     background-color: #ff0019;

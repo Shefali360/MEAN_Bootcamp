@@ -12,7 +12,6 @@ class homepage extends Component{
         axios.get("http://localhost:8000/home")
         .then(res=>{
             const data=res.data;
-            console.log(data);
             this.setState({data:data});
 
         })
@@ -22,25 +21,16 @@ class homepage extends Component{
     }
 
     deleteUser=(username)=>{
-        console.log("hi");
         axios.post("http://localhost:8000/deleteuser",{username:username})
         .then(res=>{
             console.log("Success");
-        })
-        .catch(err=>{
-            console.log("error");
-        });
-        axios.get("http://localhost:8000/home")
-        .then(res=>{
             const data=res.data;
-            console.log(data);
             this.setState({data:data});
 
         })
         .catch(err=>{
             console.log("error");
         });
-
     }
     render(){
             let d=this.state.data;

@@ -43,7 +43,7 @@ const users = [{
 {
     "username": "timotheus",
     "firstname": "Timotheus",
-    "lastname": "January 1st",
+    "lastname": "Jackson",
     "createdOn":"28-4-2020"
 },
 {
@@ -85,7 +85,7 @@ exports.router = (app) => {
     app.post('/deleteuser',(req,res)=>{
         deleteuser(req.body.username);
         res.status(200);
-
+        res.json(users);
     })
 
 }
