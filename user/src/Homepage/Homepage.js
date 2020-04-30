@@ -26,15 +26,18 @@ class homepage extends Component{
             console.log("Success");
             const data=res.data;
             this.setState({data:data});
-
         })
         .catch(err=>{
             console.log("error");
         });
+
     }
     render(){
             let d=this.state.data;
             let contents=null;
+            if (d.length===0){
+                contents=<tbody><tr><td>Please add new rows.</td></tr></tbody>
+            }else{
             contents= d.map((data)=>{
                 return(
                   <tbody key={data.username}>
@@ -43,13 +46,14 @@ class homepage extends Component{
                             <td>{data.firstname}</td>
                             <td>{data.lastname}</td>
                              <td>{data.createdOn}</td>
-                             <td><button onClick={()=>{this.deleteUser(data.username)}}>Delete User</button></td>
+                             <td><button onClick={()=>this.deleteUser(data.username)}>Delete User</button></td>
                         </tr>
                  </tbody>
                   
                 )
 
             })
+        }
         return(
             <table className="table">
                 <thead>
