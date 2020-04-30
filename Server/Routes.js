@@ -66,9 +66,9 @@ adduser=(userdata)=>{
 }
 
 deleteuser=(username)=>{
-   users.filter(user=>{
-       return (user.username!==username);
-   })
+  const index=users.findIndex(user=>user.username===username);
+  if(index>=0)
+  users.splice(index,1);
 
 }
 
@@ -82,7 +82,7 @@ exports.router = (app) => {
        res.status(200);
     
     })
-    app.delete('/deleteuser',(req,res)=>{
+    app.post('/deleteuser',(req,res)=>{
         deleteuser(req.body.username);
         res.status(200);
 

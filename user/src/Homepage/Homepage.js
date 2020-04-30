@@ -22,13 +22,25 @@ class homepage extends Component{
     }
 
     deleteUser=(username)=>{
+        console.log("hi");
         axios.post("http://localhost:8000/deleteuser",{username:username})
         .then(res=>{
             console.log("Success");
         })
         .catch(err=>{
             console.log("error");
+        });
+        axios.get("http://localhost:8000/home")
+        .then(res=>{
+            const data=res.data;
+            console.log(data);
+            this.setState({data:data});
+
         })
+        .catch(err=>{
+            console.log("error");
+        });
+
     }
     render(){
             let d=this.state.data;
@@ -36,12 +48,12 @@ class homepage extends Component{
             contents= d.map((data)=>{
                 return(
                   <tbody key={data.username}>
-                        <tr >
+                        <tr>
                             <td>{data.username}</td>
                             <td>{data.firstname}</td>
                             <td>{data.lastname}</td>
                              <td>{data.createdOn}</td>
-                             <td><button onClick={this.deleteUser(data.username)}>Delete User</button></td>
+                             <td><button onClick={()=>{this.deleteUser(data.username)}}>Delete User</button></td>
                         </tr>
                  </tbody>
                   
