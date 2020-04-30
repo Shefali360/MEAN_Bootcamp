@@ -6,8 +6,7 @@ import './Homepage.css';
 class homepage extends Component{
 
     state={
-        data:[],
-        username:''
+        data:[]
     }
     componentDidMount(){
         axios.get("http://localhost:8000/home")
@@ -22,10 +21,8 @@ class homepage extends Component{
         })
     }
 
-    deleteUser=(event)=>{
-        this.setState({username:event.target.username})
-        console.log(this.state.username);
-        axios.post("http://localhost:8000/deleteuser",this.state.username)
+    deleteUser=(username)=>{
+        axios.post("http://localhost:8000/deleteuser",{username:username})
         .then(res=>{
             console.log("Success");
         })
@@ -44,7 +41,7 @@ class homepage extends Component{
                             <td>{data.firstname}</td>
                             <td>{data.lastname}</td>
                              <td>{data.createdOn}</td>
-                             <td><button onClick={(event)=>{this.deleteUser(event)}}>Delete User</button></td>
+                             <td><button onClick={this.deleteUser(data.username)}>Delete User</button></td>
                         </tr>
                  </tbody>
                   
