@@ -4,7 +4,9 @@
   "description": "Expressjs session 2 exercises",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "qus1and3": "node Exercises/Ques1and3/server.js" ,
+    "qus4": "node Exercises/Ques4/child.js"
   },
   "repository": {
     "type": "git",

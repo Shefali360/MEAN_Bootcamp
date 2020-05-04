@@ -8,7 +8,7 @@ Exercises Folder:-
 
 Ques 1 and 3 merged in folder Ques1and3:
 
-#npm run Ques1and3
+npm run qus1and3
 
 Ques2 in folder Ques2:
 
@@ -17,4 +17,4 @@ Ques2 in folder Ques2:
 
 Ques4 in folder Ques4:
 
-#npm run Ques4
+npm run qus4
