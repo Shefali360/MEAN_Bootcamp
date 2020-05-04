@@ -4,10 +4,10 @@ const jwt=require('jsonwebtoken');
 const encryptionKey="MEAN_BOOTCAMP_EXPRESS_SESSION";
 
 verifyToken=(req,res,next)=>{
-    jwt.verify(req.body.token,encryptionKey,(error,payload)=>{
+    jwt.verify(req.body.token,encryptionKey,(error)=>{
         if(error){
             res.status(401);
-            return res.send("Acess Denied!Invalid token received.")
+            return res.send("Access Denied!Invalid token received.")
         }
         return next();
     })
@@ -15,13 +15,13 @@ verifyToken=(req,res,next)=>{
 }
 
 exports.router=(app)=>{
-   app.get('/gitData', async (req,res)=>{
+    // call http://localhost:3001/github/detail/user/vishalbajpaidev
+   app.get('/github/detail/user/:username', async (req,res)=>{
        try{
-       const response= await axios.get(`https://api.github.com/users/${req.query.username}`)
-       const data=await res.json(response.data);
-       return data;
+            const response= await axios.get(`https://api.github.com/users/${req.params.username}`)
+            res.json(response.data);
        }catch(error){
-           await res.json({error:true});
+            res.json({error:true});
        }
     })
 
