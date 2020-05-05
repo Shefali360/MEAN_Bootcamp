@@ -56,5 +56,5 @@ itemsSchema.pre("findByIdAndUpdate", () => {
 const itemsModel = mongoose.model("Items", itemsSchema);
 
 module.exports = {
-  itemsModel,
+  itemsModel
 };

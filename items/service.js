@@ -5,15 +5,14 @@ module.exports.create = async (data) => {
     await itemsModel.findOneAndUpdate(
       { item_name: item.item_name },
       {
-        $set:data,
+        $set:item,
       },
       { upsert: true }
     );
    
   }
-  console.log(items);
   return {
-    "success": "true"
+    success:true
   };
 };
 
