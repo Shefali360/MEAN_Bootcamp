@@ -27,10 +27,6 @@ module.exports.updateById = async (req, res) => {
   }
 };
 
-// module.exports.update = async (req, res) => {
-//   const response = await item.update(req.query, req.body);
-//   res.send(response);
-// };
 
 module.exports.delete = async (req, res) => {
   try{

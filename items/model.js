@@ -29,18 +29,21 @@ const itemsSchema = new Schema(
       },
       updatedAt: {
         type: Date,
+        default:Date.now
       },
       category:{
           type:String,
-          required:true
+          enum:["grocery","medical", "fruits","veg", "beverages","babycare","cleaning"],
+          default:"grocery"
       },
       location:{
           type:String,
-          required:true
+          enum:["store","kitchen"],
+          default:"store"
       }
 });
   
-itemsSchema.pre('update',()=> {
+itemsSchema.pre('findByIdAndUpdate',()=> {
   this.set({ updatedAt: Date.now() });
 });
 

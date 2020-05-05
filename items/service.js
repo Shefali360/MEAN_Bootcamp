@@ -2,41 +2,30 @@ const {
     itemsModel
   } = require('./model');
   
-  module.exports.create = async ({
-   itemName,
-   quantity,
-   isSanitized,
-   unit,
-   expiryDate,
-   category,
-   location
-  }) => {
-    const items = await itemsModel.create({
-      item_name:itemName,
-      quantity,
-      isSanitized,
-      unit,
-      expiryDate,
-      category,
-      location 
-    });
+  module.exports.create = async (data) => {
+      for(let item of data){
+    await itemsModel.findOneAndUpdate({name:item.item_name},{
+      $set:item
+    },{upsert:true});
+    console.log(items);
     return {
-     items
+    success:true
     };
-  };
+  }
+};
   
   module.exports.getAll = async () => {
     const items = await itemsModel.find();
     return items;
   };
   
-  module.exports.updateById = async ({ id },{updatedObject}) => {
-    const items = await itemsModel.updateMany({
+  module.exports.updateById = async ({ id },updatedobj) => {
+    const items = await itemsModel.findByIdAndUpdate({
       _id:id
     },
-     {
-         $set:updatedObject
-     });
+    {
+        $set:updatedobj
+    });
     return items;
   };
   
