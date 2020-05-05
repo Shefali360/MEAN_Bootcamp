@@ -12,6 +12,7 @@ app.use(routes);
 
 mongoose.connect("mongodb://localhost:27017/household-items", {
   useNewUrlParser: "true",
+  useFindAndModify:false
 });
 
 mongoose.connection.on("error", err => {
