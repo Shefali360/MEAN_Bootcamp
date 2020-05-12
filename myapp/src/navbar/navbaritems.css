@@ -1,7 +1,7 @@
 .list{
     list-style-type: none;
     display: flex;
-    background-color: #ff0019;
+    background-color: #787878;
     padding:20px;
     justify-content: space-evenly;
 }

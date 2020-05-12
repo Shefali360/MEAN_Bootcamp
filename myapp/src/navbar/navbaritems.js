@@ -6,8 +6,11 @@ import './navbaritems.css'
 const Navbar = (props) => {
   return (
     <ul className="list">
-      <NavbarItem link="/">
-       LOGIN
+      <NavbarItem link="/signup">
+      SIGNUP
+      </NavbarItem>
+      <NavbarItem link="/login">
+      LOGIN
       </NavbarItem>
       <NavbarItem link="/home">HOME</NavbarItem>
     </ul>
