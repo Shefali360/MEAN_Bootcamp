@@ -9,7 +9,14 @@ class Signup extends Component{
     email: "",
     password:"",
     submitDisabled: true,
+    signedin:false
   };
+
+  baseState=this.state;
+
+  resetForm=()=>{
+    this.setState(this.baseState);
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -37,6 +44,7 @@ class Signup extends Component{
   axios
   .post("http://localhost:3030/signup", userObject)
   .then((res) => {
+    this.setState({signedin:true})
     console.log("Success");
   })
   .catch((err) => {
@@ -44,6 +52,10 @@ class Signup extends Component{
   });
 };
     render(){
+      let signed=null;
+      if(this.state.signedin){
+        signed=<p>You have been successfully signed in.</p>
+      }
         return(
             <form className="form">
             <label>Name:</label>
@@ -88,13 +100,19 @@ class Signup extends Component{
             <br />
             <input
               className="button"
-              type="submit"
+              type="button"
               value="Signup"
               disabled={this.state.submitDisabled}
               onClick={(event) => {
                 this.submitHandler(event);
               }}
             />
+            <a href="/auth/google">Sign In with Google</a>
+            <input 
+          onClick={this.resetForm}
+          value="Reset"
+          type="button"/>
+            {signed}
           </form>
         )
     }

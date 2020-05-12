@@ -6,7 +6,8 @@ class Login extends Component{
     username: "",
     password:"",
     submitDisabled: true,
-    token:null
+    token:null,
+    error:false
   };
 
   handleChange = (event) => {
@@ -33,15 +34,15 @@ class Login extends Component{
   .then((res) => {
     if(!res.data.error){
    this.setState({token:res.data.token});
-    }
     console.log("Success");
-    if(!res.data.error){
       this.props.history.push({
         pathname:"/home",
         state:{
           token:this.state.token
         }
       });
+    }else{
+     this.setState({error:true})
     }
   })
   .catch((err) => {
@@ -49,7 +50,11 @@ class Login extends Component{
   });
 };
     render(){
-        return(
+      let e=null;
+      if(this.state.error){
+        e= <p>Invalid username or password.Please try again!</p>
+      }
+      return(
             <form className="form">
             <label>Email:</label>
             <br />
@@ -80,7 +85,9 @@ class Login extends Component{
                 this.submitHandler(event);
               }}
             />
+            {e}
           </form>
+         
         )
     }
 }
