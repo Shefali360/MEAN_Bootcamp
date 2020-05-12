@@ -107,7 +107,6 @@ class Signup extends Component{
                 this.submitHandler(event);
               }}
             />
-            <a href="/auth/google">Sign In with Google</a>
             <input 
           onClick={this.resetForm}
           value="Reset"
