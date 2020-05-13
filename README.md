@@ -11,3 +11,7 @@ myapp Folder(Front-end):-
 Server(back-end):-
 
 #node index.js
+
+To check authentication via google-
+
+localhost:3030/auth/google
